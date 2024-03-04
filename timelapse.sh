@@ -37,9 +37,12 @@ for ((i=0; i<NUM_CAPTURES; i++)); do
   sleep $INTERVAL
 done
 
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 ffmpeg -y -f image2 -pattern_type glob -framerate 30 \
        -i "$SAVE_PATH\*.jpg" \
-       -pix_fmt yuv420p -b 1500k timelapse.mp4
+       -pix_fmt yuv420p -b 1500k "$TIMESTAMP.mp4"
+
+# Remove the temporary images
 rm "$SAVE_PATH/*\.jpeg"
 
 echo "Timelapse capture complete."
