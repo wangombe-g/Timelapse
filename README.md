@@ -23,10 +23,12 @@ The `timelapse.sh` script is a utility for capturing photos and using ffmpeg to 
 	```shell
 	cd timelapse
 	```
+	
+3. Run ```chmod +x timelapse.sh```
 
-3. Run the `timelapse.sh` script:
+4. Run the `./timelapse.sh` script:
 	```shell
-	./timelapse.sh
+	./timelapse.sh 1.5 8
 	```
 
 4. The captured images will be stored in the `timelapse/timelapse` directory, and the timelapse video will be saved as `output/{current_data}.mp4`.
