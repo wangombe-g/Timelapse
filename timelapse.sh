@@ -12,7 +12,7 @@ DURATION_HOURS=$1
 INTERVAL=$2
 DURATION_SECONDS=$(echo "$DURATION_HOURS * 3600" | bc)
 
-SAVE_PATH="/home/eugene/Pictures/Timelapse/timelapse" # Update this path where you want to save the images
+SAVE_PATH="path/to/your/clone/location" # Update this path where you want to save the images
 TMP_PATH="/mnt/timelapse"  # Temporary storage in RAM
 
 # Calculate the number of captures based on duration and interval
@@ -26,7 +26,7 @@ echo "Timelapsed video duration will be $TIMELAPSE_DURATION seconds."
 # Start capturing images
 for ((i=0; i<NUM_CAPTURES; i++)); do
   TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-  FINAL_FILENAME="$SAVE_PATH/image_$TIMESTAMP.jpeg"
+  FINAL_FILENAME="$SAVE_PATH/timelapse/image_$TIMESTAMP.jpeg"
 
   streamer -o $TMP_PATH/tmp_image_0.jpeg -c /dev/video4 -s 1920x1080 -j 100 -t 5 -r 1 -q
 
@@ -43,6 +43,6 @@ ffmpeg -y -f image2 -pattern_type glob -framerate 30 \
        -pix_fmt yuv420p -b 1500k "$TIMESTAMP.mp4"
 
 # Remove the temporary images
-rm "$SAVE_PATH/*\.jpeg"
+rm "$SAVE_PATH/output/*\.jpeg"
 
 echo "Timelapse capture complete."
