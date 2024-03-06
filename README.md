@@ -36,6 +36,9 @@ You can customize the following settings in the `config.sh` file:
 - `INTERVAL`: Time interval between each capture (in seconds)
 - `DURATION`: Total duration of the timelapse (in minutes)
 
+Usage `./timelapse.sh <duration in hours> <interval in seconds>"`
+Example: `./timelapse.sh 1 5` will capture images for 1 hour at an interval of 5 seconds."
+
 ## Contributing
 You're welcome to suggest an area of improvement through a pull request.
 
